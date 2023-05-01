@@ -1,0 +1,41 @@
+{
+  "name": "selfge-cli",
+  "version": "0.0.1",
+  "description": "A simple CLI tool for self.ge",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "./dist/index.js",
+  "bin": {
+    "selfge": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node dist/index.js --no-warnings",
+    "prestart": "pnpm run build",
+    "dev": "tsup src/index.ts --watch --minify --sourcemap --format esm",
+    "build": "tsup src/index.ts --minify --format cjs,esm --dts-resolve",
+    "prepublishOnly": "pnpm run build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.16.3",
+    "@types/yargs": "^17.0.24",
+    "tsup": "6.5.0",
+    "typescript": "4.9.3"
+  },
+  "dependencies": {
+    "@sunney/requests": "^0.1.18",
+    "arg": "^5.0.2",
+    "chalk": "^5.2.0",
+    "conf": "^11.0.1",
+    "inquirer": "^9.2.0",
+    "json-schema-typed": "^8.0.1",
+    "lowdb": "^6.0.1",
+    "yargs": "^17.7.2"
+  }
+}
