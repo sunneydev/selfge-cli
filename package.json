@@ -1,6 +1,6 @@
 {
   "name": "selfge-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple CLI tool for self.ge",
   "publishConfig": {
     "access": "public"

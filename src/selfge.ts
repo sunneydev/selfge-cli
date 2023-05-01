@@ -16,11 +16,17 @@ export default (subDomain: string) => ({
     if (req.status !== 200 || !req.redirected) {
       throw new Error("Login failed");
     }
+
+    if (!req.headers.get("set-cookie")) {
+      await this.login(username, password);
+      return;
+    }
   },
   async _changeStatus(status: "online" | "offline") {
     await this.client.post("/", {
       params: { option: "profileedit" },
       body: `task=${status === "online" ? "login" : "logout"}`,
+      content: "application/x-www-form-urlencoded",
     });
   },
   async startJob() {
