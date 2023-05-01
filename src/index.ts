@@ -100,6 +100,7 @@ async function setStatus(newStatus: "on" | "off") {
 }
 
 yargs(process.argv.slice(2))
+  .scriptName("self-cli")
   .middleware((argv) => {
     if (argv._[0] !== "init") {
       const subDomain = config.get("subDomain");
